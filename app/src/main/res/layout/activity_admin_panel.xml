@@ -23,12 +23,12 @@
         android:id="@+id/qr_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/student_detail"
-        android:cropToPadding="false"
-        android:scaleType="fitXY"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:src="@drawable/qr"/>
+        android:background="@android:drawable/divider_horizontal_dark"
+        android:cropToPadding="false"
+        android:scaleType="fitXY" />
 
     <EditText
         android:id="@+id/student_name"
