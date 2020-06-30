@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "341841478518",
+    "firebase_url": "https://qrcodeattendancesystem.firebaseio.com",
+    "project_id": "qrcodeattendancesystem",
+    "storage_bucket": "qrcodeattendancesystem.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341841478518:android:6be6eb49496752447ab057",
+        "android_client_info": {
+          "package_name": "com.example.qrattendance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341841478518-3vd5um10rv2men8hnnec41e9t2rodqrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUxx9dUs7nULIo6dgCzg-IT4dEzo74oEk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341841478518-3vd5um10rv2men8hnnec41e9t2rodqrf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341841478518:android:4f4c945b369708d27ab057",
+        "android_client_info": {
+          "package_name": "obstinate.demon.qrcodeattendancesystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341841478518-32if0bnuuojotec5r14ng4js5ocv59es.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "obstinate.demon.qrcodeattendancesystem",
+            "certificate_hash": "6b313e05d960d2d6a4314dcee928620f631c7a03"
+          }
+        },
+        {
+          "client_id": "341841478518-3vd5um10rv2men8hnnec41e9t2rodqrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUxx9dUs7nULIo6dgCzg-IT4dEzo74oEk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341841478518-3vd5um10rv2men8hnnec41e9t2rodqrf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
