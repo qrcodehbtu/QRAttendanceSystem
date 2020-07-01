@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -31,6 +32,7 @@ import java.util.HashMap;
 public class AdminPanel extends AppCompatActivity  {
 
     private Button AddStudentButton,GenerateQR;
+    private Bitmap qrbitmap=null;
     private ImageView studentqr;
     private Uri imageUri;
     private EditText InputName, InputPhoneNumber, InputRollno;
@@ -60,7 +62,10 @@ public class AdminPanel extends AppCompatActivity  {
           GenerateQR.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View view) {
-                  qrgenerate();
+                  QRCodeGen qrgen = new QRCodeGen(200,200);
+                  qrbitmap= qrgen.generateQRCode(InputRollno.getText().toString());
+                  studentqr.setImageBitmap(qrbitmap);
+                  qrbitmap=null;
               }
           });
 

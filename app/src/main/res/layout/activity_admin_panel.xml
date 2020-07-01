@@ -32,8 +32,7 @@
         android:layout_below="@+id/student_detail"
         android:cropToPadding="false"
         android:scaleType="fitXY"
-        android:layout_marginTop="15dp"
-        android:src="@drawable/qr"/>
+        android:layout_marginTop="15dp" />
 
     <EditText
         android:id="@+id/student_name"
