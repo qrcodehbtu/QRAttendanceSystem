@@ -1,4 +1,4 @@
-package obstinate.demon.qrcodeattendancesystem;
+package com.example.qrattendance;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
