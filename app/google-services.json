@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "216430968002",
+    "firebase_url": "https://qrattendance-56fb5.firebaseio.com",
+    "project_id": "qrattendance-56fb5",
+    "storage_bucket": "qrattendance-56fb5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216430968002:android:f55027c0e25f4a40990f5b",
+        "android_client_info": {
+          "package_name": "com.example.qrattendance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "216430968002-7236f0a0ha5bja6hi3b5im22qog8g261.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvLCSjkOQDUZvYqTA9L-OqDIZNRqCChZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "216430968002-7236f0a0ha5bja6hi3b5im22qog8g261.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
