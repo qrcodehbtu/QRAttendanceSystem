@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="false">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -17,12 +22,12 @@
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:text="Add Student Details"
-        android:textStyle="italic"/>
+        android:textStyle="bold|italic"/>
 
     <ImageView
         android:id="@+id/qr_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/student_detail"
         android:cropToPadding="false"
@@ -40,8 +45,7 @@
         android:padding="15dp"
         android:layout_centerHorizontal="true"
         android:hint="Student Name"
-        android:textColor="#06CCF0"
-        android:textColorHint="#06CCF0"
+        android:textColorHint="#000000"
         android:textSize="19sp"
         />
 
@@ -57,8 +61,7 @@
         android:padding="15dp"
         android:layout_centerHorizontal="true"
         android:hint="Roll No."
-        android:textColor="#06CCF0"
-        android:textColorHint="#06CCF0"
+        android:textColorHint="#000000"
         android:textSize="19sp"
         />
     <EditText
@@ -72,19 +75,32 @@
         android:inputType="number"
         android:layout_centerHorizontal="true"
         android:hint="Phone No."
-        android:textColor="#06CCF0"
-        android:textColorHint="#06CCF0"
+        android:textColorHint="#000000"
         android:textSize="19sp"
         />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:background="@drawable/input_design"
+        android:layout_width="350dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:padding="15dp"
+        android:text="Select branch"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/student_phone" />
+
+
       <LinearLayout
           android:layout_height="wrap_content"
            android:layout_width="wrap_content"
-          android:layout_below="@+id/student_phone"
+          android:layout_below="@+id/spinner1"
           android:id="@+id/linearl"
           android:gravity="center_horizontal"
           android:orientation="horizontal">
 
-    <EditText
+    <Spinner
         android:id="@+id/student_year"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
@@ -92,13 +108,9 @@
         android:layout_marginTop="15dp"
         android:layout_marginLeft="30dp"
         android:padding="15dp"
-        android:inputType="number"
-        android:hint="Year"
-        android:textColor="#06CCF0"
-        android:textColorHint="#06CCF0"
-        android:textSize="19sp"
+        android:textSize="20sp"
         />
-         <EditText
+         <Spinner
              android:layout_width="100dp"
              android:layout_height="wrap_content"
              android:id="@+id/student_sem"
@@ -106,11 +118,7 @@
               android:layout_marginLeft="150dp"
                android:layout_marginTop="15dp"
              android:padding="15dp"
-             android:inputType="number"
-             android:hint="SEM"
-             android:textColor="#06CCF0"
-             android:textColorHint="#06CCF0"
-             android:textSize="19sp" />
+             android:textSize="20sp" />
 
       </LinearLayout>
 
@@ -122,9 +130,9 @@
         android:text="Generate QR Code"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
-        android:padding="17dp"
+        android:padding="15dp"
         android:layout_marginTop="20dp"
-        android:textSize="20sp"
+        android:textSize="19dp"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:background="@drawable/button"
@@ -138,12 +146,12 @@
         android:text="Add Student"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
-        android:padding="17dp"
+        android:padding="15dp"
         android:layout_marginTop="20dp"
-        android:textSize="20sp"
+        android:textSize="19dp"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:background="@drawable/button"
         />
-
 </RelativeLayout>
+</ScrollView>
