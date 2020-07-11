@@ -2,6 +2,8 @@ package com.example.qrattendance;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,42 +12,51 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import static android.text.TextUtils.isEmpty;
 
 public class FacultyLogin extends AppCompatActivity {
 
     private Button loginButton;
-    private EditText etPhoneNumber, etPassword;
+    private EditText etRollNumber, etPassword;
     private ProgressDialog loadingBar;
     private TextView AdminLink,NotAdminLink;
-    private  String dbname ="Users";
+    private  String dbname ="students";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faculty_login);
 
         loginButton = (Button) findViewById(R.id.login_btn);
-        etPhoneNumber = (EditText) findViewById(R.id.login_phone_number_input);
+        etRollNumber = (EditText) findViewById(R.id.login_roll_number_input);
         etPassword = (EditText) findViewById(R.id.login_password_input);
-        loadingBar = new ProgressDialog(this);
+        loadingBar = new ProgressDialog(FacultyLogin.this);
         AdminLink = (TextView) findViewById(R.id.admin_panel_link);
         NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
 
          loginButton.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 if(isEmpty(etPhoneNumber.getText().toString()) || isEmpty(etPassword.getText().toString())  )
+                 String roll = etRollNumber.getText().toString();
+                 String pw = etPassword.getText().toString();
+                 if(isEmpty(etRollNumber.getText().toString()) || isEmpty(etPassword.getText().toString())  )
                  {
                      Toast.makeText(FacultyLogin.this,"Please enter your username and password..",Toast.LENGTH_SHORT).show();
                  }
-                 else {
-                     String phone = etPhoneNumber.getText().toString();
-                     String pw = etPassword.getText().toString();
+                 else
+                     {
+
                      loadingBar.setTitle("Authenticating Account");
-                     loadingBar.setMessage("Please wait, while we are checking the credentials.");
+                     loadingBar.setMessage("Please wait, " +
+                                    "while we are checking the credentials.");
                      loadingBar.setCanceledOnTouchOutside(false);
                      loadingBar.show();
-                     Authenticateaccount(phone,pw);
+                     Authenticateaccount(roll,pw);
 
                  }
              }
@@ -57,7 +68,7 @@ public class FacultyLogin extends AppCompatActivity {
                 loginButton.setText("Login");
                 AdminLink.setVisibility(View.VISIBLE);
                 NotAdminLink.setVisibility(View.INVISIBLE);
-                dbname = "Users";
+                dbname = "students";
                 clearet();
             }
         });
@@ -73,9 +84,9 @@ public class FacultyLogin extends AppCompatActivity {
         });
     }
 
-    private void Authenticateaccount(String phone, String pw) {
+    private void Authenticateaccount(final String rollno, final String pw) {
         if (dbname.equals("admin")) {
-            if (phone.equals("170104031") && pw.equals("mypassword")) {
+            if (rollno.equals("170104031") && pw.equals("mypassword")) {
                 Toast.makeText(FacultyLogin.this, "Welcome Admin, you are logged in Successfully..", Toast.LENGTH_SHORT).show();
                 loadingBar.dismiss();
                 Intent intent = new Intent( FacultyLogin.this, AdminPanel.class);
@@ -89,9 +100,44 @@ public class FacultyLogin extends AppCompatActivity {
             }
 
         }
-        if (dbname.equals("Users")){
-            Toast.makeText(FacultyLogin.this," RUKO ZARA SABAR KARO !!",Toast.LENGTH_SHORT).show();
-            loadingBar.dismiss();
+        else
+            {
+                final DatabaseReference RootRef;
+                RootRef = FirebaseDatabase.getInstance().getReference();
+             RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                 @Override
+                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                  if(snapshot.child("students").child(rollno).exists())
+                  {
+                      students studentdata=snapshot.child("students").child(rollno).getValue(students.class);
+                     if(studentdata.getRollno().equals(rollno) && studentdata.getPassword().equals(pw))
+                     {
+                         Toast.makeText(FacultyLogin.this, "welcome bro" +studentdata.getBranch(), Toast.LENGTH_SHORT).show();
+                         loadingBar.dismiss();
+                         clearet();
+                     }
+                     else
+                     {
+                         Toast.makeText(FacultyLogin.this, "Incorrect Roll no. or Password", Toast.LENGTH_SHORT).show();
+                         loadingBar.dismiss();
+                         clearet();
+                     }
+
+                  }
+                  else
+                  {
+                      Toast.makeText(FacultyLogin.this, "Account with this " + rollno + " roll number do not exists.", Toast.LENGTH_SHORT).show();
+                      loadingBar.dismiss();
+                      clearet();
+                  }
+                 }
+
+                 @Override
+                 public void onCancelled(@NonNull DatabaseError error) {
+
+                 }
+             });
+
         }
 
 
@@ -99,7 +145,7 @@ public class FacultyLogin extends AppCompatActivity {
 
     private void clearet() {
         etPassword.setText("");
-        etPhoneNumber.setText("");
+        etRollNumber.setText("");
     }
 
 }

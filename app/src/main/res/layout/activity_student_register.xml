@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+    android:background="@drawable/welcome"
+        tools:context=".StudentRegister">
+
+    <TextView
+        android:id="@+id/student_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Fill The Following details to Register"
+        android:textAlignment="center"
+        android:textColor="#06CCF0"
+        android:textSize="22dp"
+        android:textStyle="bold|italic" />
+
+
+        <EditText
+            android:id="@+id/student_name"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/student_register"
+            android:background="@drawable/input_design"
+            android:layout_marginTop="50dp"
+            android:padding="15dp"
+            android:layout_centerHorizontal="true"
+            android:hint="Student Name"
+            android:textColor="#06CCF0"
+            android:textColorHint="#06CCF0"
+            android:textSize="19sp"
+            />
+
+
+        <EditText
+            android:id="@+id/student_rollno"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/student_name"
+            android:background="@drawable/input_design"
+            android:inputType="number"
+            android:layout_marginTop="15dp"
+            android:padding="15dp"
+            android:layout_centerHorizontal="true"
+            android:hint="Roll No."
+            android:textColor="#06CCF0"
+            android:textColorHint="#06CCF0"
+            android:textSize="19sp"
+            />
+
+        <EditText
+            android:id="@+id/student_phone"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/student_rollno"
+            android:background="@drawable/input_design"
+            android:layout_marginTop="15dp"
+            android:padding="15dp"
+            android:inputType="number"
+            android:layout_centerHorizontal="true"
+            android:hint="Phone No."
+            android:textColor="#06CCF0"
+            android:textColorHint="#06CCF0"
+            android:textSize="19sp"
+            />
+    <EditText
+        android:id="@+id/student_password"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/student_phone"
+        android:background="@drawable/input_design"
+        android:layout_marginTop="15dp"
+        android:inputType="textPassword"
+        android:padding="15dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Choose Password"
+        android:textColor="#06CCF0"
+        android:textColorHint="#06CCF0"
+        android:textSize="19sp"
+        />
+    <EditText
+        android:id="@+id/student_passwordconfirm"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_below="@+id/student_password"
+        android:background="@drawable/input_design"
+        android:layout_marginTop="15dp"
+        android:padding="15dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Confirm Password"
+        android:textColor="#06CCF0"
+        android:textColorHint="#06CCF0"
+        android:textSize="19sp"
+        />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:background="@drawable/input_design"
+            android:layout_width="350dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:padding="15dp"
+            android:text="Select branch"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/student_passwordconfirm" />
+
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/spinner1"
+            android:id="@+id/linearl"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/student_year"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_design"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="30dp"
+                android:padding="15dp"
+                android:textSize="20sp"
+                />
+            <Spinner
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/student_sem"
+                android:background="@drawable/input_design"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="15dp"
+                android:padding="15dp"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/register_student"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearl"
+            android:text="REGISTER NOW"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:padding="15dp"
+            android:layout_marginTop="20dp"
+            android:textSize="19dp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button"
+            />
+    </RelativeLayout>
