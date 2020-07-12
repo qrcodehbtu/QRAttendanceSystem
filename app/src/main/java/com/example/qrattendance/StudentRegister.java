@@ -24,14 +24,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 
 public class StudentRegister extends AppCompatActivity {
     private Button AddStudentButton,GenerateQR;
     private DatabaseReference productref;
-    private StorageReference ProductImagesRef;
     private EditText InputName, InputPhoneNumber, InputRollno,Inputpassword,Inputconfirmpassword;
     private ProgressDialog loadingBar;
     private String branch="",rollno,name,phone,password,confirmpw;
@@ -57,7 +55,6 @@ public class StudentRegister extends AppCompatActivity {
         InputPhoneNumber = (EditText) findViewById(R.id.student_phone);
         loadingBar = new ProgressDialog(this);
         setspinnerview(spin,st_year,st_sem);
-
         AddStudentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,7 +98,6 @@ public class StudentRegister extends AppCompatActivity {
             loadingBar.show();
             ValidatephoneNumber(rollno,name, phone, password,branch,yearno,semno);
         }
-
     }
 
     private void ValidatephoneNumber(final String rollno, final String name, final String phone, final String password, final String branch, final String yearno, final String semno) {
@@ -120,6 +116,7 @@ public class StudentRegister extends AppCompatActivity {
                     userdataMap.put("branch",branch);
                     userdataMap.put("year",yearno);
                     userdataMap.put("semester",semno);
+                    RootRef.child("attendance").child(yearno).child(branch).child(rollno).child("rollno:").setValue(rollno);
                     RootRef.child("students").child(rollno).updateChildren(userdataMap)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
