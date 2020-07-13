@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="false">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -109,7 +112,6 @@
             android:layout_marginTop="15dp"
             android:padding="15dp"
             android:text="Select branch"
-            android:textSize="20sp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/student_passwordconfirm" />
 
@@ -130,17 +132,17 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="30dp"
                 android:padding="15dp"
-                android:textSize="20sp"
+
                 />
+
             <Spinner
+                android:id="@+id/student_sem"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/student_sem"
-                android:background="@drawable/input_design"
                 android:layout_marginLeft="150dp"
                 android:layout_marginTop="15dp"
-                android:padding="15dp"
-                android:textSize="20sp" />
+                android:background="@drawable/input_design"
+                android:padding="15dp" />
 
         </LinearLayout>
 
@@ -160,3 +162,5 @@
             android:background="@drawable/button"
             />
     </RelativeLayout>
+</ScrollView>
+

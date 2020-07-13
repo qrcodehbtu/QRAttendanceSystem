@@ -154,7 +154,7 @@ public class StudentRegister extends AppCompatActivity {
 
     private void setspinnerview(Spinner spin,Spinner st_year,Spinner st_sem)
     {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, branchesname);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.simple_view_text, branchesname);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(adapter);
         spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -168,7 +168,7 @@ public class StudentRegister extends AppCompatActivity {
 
             }
         });
-        ArrayAdapter<String> adapter_year = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, year);
+        ArrayAdapter<String> adapter_year = new ArrayAdapter<String>(this, R.layout.simple_view_text, year);
         adapter_year.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         st_year.setAdapter(adapter_year);
         st_year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -182,7 +182,7 @@ public class StudentRegister extends AppCompatActivity {
 
             }
         });
-        ArrayAdapter<String> adapter_sem = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, semester);
+        ArrayAdapter<String> adapter_sem = new ArrayAdapter<String>(this,R.layout.simple_view_text, semester);
         adapter_sem.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         st_sem.setAdapter(adapter_sem);
         st_sem.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
