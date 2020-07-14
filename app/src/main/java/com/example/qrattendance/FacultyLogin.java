@@ -27,6 +27,7 @@ public class FacultyLogin extends AppCompatActivity {
     private ProgressDialog loadingBar;
     private TextView AdminLink,NotAdminLink;
     private  String dbname ="students";
+    private Sharedpref preff;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +38,7 @@ public class FacultyLogin extends AppCompatActivity {
         etPassword = (EditText) findViewById(R.id.login_password_input);
         loadingBar = new ProgressDialog(FacultyLogin.this);
         AdminLink = (TextView) findViewById(R.id.admin_panel_link);
+        preff =new Sharedpref((getApplicationContext()));
         NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
 
          loginButton.setOnClickListener(new View.OnClickListener() {
@@ -112,8 +114,12 @@ public class FacultyLogin extends AppCompatActivity {
                       students studentdata=snapshot.child("students").child(rollno).getValue(students.class);
                      if(studentdata.getRollno().equals(rollno) && studentdata.getPassword().equals(pw))
                      {
-                         Toast.makeText(FacultyLogin.this, "welcome bro" +studentdata.getBranch(), Toast.LENGTH_SHORT).show();
                          loadingBar.dismiss();
+                         preff.createLoginSession(studentdata.getPhone(), pw,rollno,studentdata.getName(),studentdata.getBranch(),
+                                 studentdata.getYear(),studentdata.getSemester());
+                         Intent intent = new Intent(FacultyLogin.this,StudentHomePage.class);
+                         startActivity(intent);
+
                          clearet();
                      }
                      else
