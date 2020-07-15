@@ -22,7 +22,8 @@
         android:padding="20dp"
         android:textColor="#06CCF0"
         android:textColorHint="#06CCF0"
-        android:textSize="19sp" />
+        android:textSize="19sp"
+        android:autofillHints="" />
 
 
     <EditText

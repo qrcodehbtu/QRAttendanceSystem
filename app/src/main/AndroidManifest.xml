@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SettingActivity"></activity>
         <activity android:name=".StudentProfile" />
+        <activity android:name=".ShowAttendance" />
         <activity android:name=".StudentHomePage" />
         <activity android:name=".StudentRegister" />
         <activity android:name=".AdminPanel" />

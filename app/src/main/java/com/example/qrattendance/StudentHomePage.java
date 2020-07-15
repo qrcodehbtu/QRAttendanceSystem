@@ -97,7 +97,9 @@ public class StudentHomePage extends AppCompatActivity
         if (id == R.id.nav_qr_id) {
 
         } else if (id == R.id.nav_attendance) {
-
+             Intent intent = new Intent(StudentHomePage.this,ShowAttendance.class);
+             intent.putExtra("fromwhere","student");
+             startActivity(intent);
         }
         else if(id==R.id.nav_profile)
         {

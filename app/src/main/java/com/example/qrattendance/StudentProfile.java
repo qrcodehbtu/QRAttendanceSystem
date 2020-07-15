@@ -44,8 +44,8 @@ public class StudentProfile extends AppCompatActivity {
         if(year.equals("4"))
             year+="Final";
         styear.setText(year);
-        int sem =Integer.parseInt(user.get(pref.KEY_semster));
-        sem =2*sem;
+        int sem =Integer.parseInt(user.get(pref.KEY_year));
+         sem = 2*sem-1;
         semester.setText(sem+" - "+ (sem+1));
 
 
