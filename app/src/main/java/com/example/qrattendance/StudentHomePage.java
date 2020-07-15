@@ -58,7 +58,7 @@ public class StudentHomePage extends AppCompatActivity
     }
 
     private void showqrcodeandname(String name, String year, String roll) {
-        QRCodeGen qrgen = new QRCodeGen(200,200);
+        QRCodeGen qrgen = new QRCodeGen(350,350);
         qrbitmap = qrgen.generateQRCode(roll);
         studentqr.setImageBitmap(qrbitmap);
         qrbitmap = null;
@@ -101,7 +101,8 @@ public class StudentHomePage extends AppCompatActivity
         }
         else if(id==R.id.nav_profile)
         {
-
+           Intent intent = new Intent(StudentHomePage.this,StudentProfile.class);
+            startActivity(intent);
         }
         else if (id == R.id.nav_setting) {
 
