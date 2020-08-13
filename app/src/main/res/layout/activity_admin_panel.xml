@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    tools:context=".AdminPanel"
     android:fillViewport="false">
 
 <RelativeLayout
@@ -23,16 +24,17 @@
         android:textColor="#F8000000"
         android:textSize="25dp"
         android:textStyle="bold|italic" />
+
     <Spinner
         android:id="@+id/stbranch"
-        android:background="@drawable/input_design"
-        android:layout_width="350dp"
+        android:layout_width="354dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/student_detail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
+        android:background="@drawable/input_design"
         android:padding="15dp"
-        android:text="Select branch"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/student_detail" />
+        android:text="Select branch" />
 
     <Spinner
         android:id="@+id/st_year"
@@ -62,6 +64,12 @@
         android:background="@drawable/button"
         />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/showBranch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/check_attendance"
+        android:layout_marginTop="30dp"></androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>
 </ScrollView>
