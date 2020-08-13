@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,10 +27,12 @@ public class ShowAttendance extends AppCompatActivity {
     private String rollno;
     private  Sharedpref pref;
     private TextView tv1,tv2;
+    private ProgressDialog loadingBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_attendance);
+        loadingBar = new ProgressDialog(this);
         tv1=(TextView) findViewById(R.id.textName);
         tv2=(TextView) findViewById(R.id.textRollNo);
         Log.d("coming to activity", "true");
@@ -42,7 +46,7 @@ public class ShowAttendance extends AppCompatActivity {
         Log.d("data", fromWhere);
         if(fromWhere.equals("student"))
         {
-            Log.d("studentdata","succesful" );
+            Log.d("studentdata","successful" );
             pref = new Sharedpref(getApplicationContext());
             HashMap<String, String> user = pref.getuserdetails();
             String name = user.get(Sharedpref.KEY_NAME);
@@ -57,16 +61,20 @@ public class ShowAttendance extends AppCompatActivity {
         }
         else if(fromWhere.equals("admin"))
         {
-
-        }
-        else
-        {
-
+            rollno=extras.getString("sRoll");
+            String name=extras.getString("sName");
+            tv1.setText("Student name - "+name);
+            tv2.setText("Roll no - " +rollno);
+            usingRecyclerView(rollno);
         }
 
     }
     public void usingRecyclerView(final String rollno)
     {
+        loadingBar.setTitle("Showing Attendance");
+        loadingBar.setMessage("Please wait, while we are fetching the data.");
+        loadingBar.setCanceledOnTouchOutside(false);
+        loadingBar.show();
         recycler_view = (RecyclerView) findViewById(R.id.recycler_Expand);
         recycler_view.setLayoutManager(new LinearLayoutManager(this));
 
@@ -102,12 +110,13 @@ public class ShowAttendance extends AppCompatActivity {
                             Parent.add(new ParentList("Month: "+ds.getKey().toString()+"              TA:- "+attendanceCount, Child));
                             DocExpandableRecyclerAdapter adapter = new DocExpandableRecyclerAdapter(Parent);
                             recycler_view.setAdapter(adapter);
-
+                            loadingBar.dismiss();
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-
+                            Toast.makeText(ShowAttendance.this, "Some error occurred", Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
                         }
                     });
 
@@ -119,7 +128,8 @@ public class ShowAttendance extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(ShowAttendance.this, "Some error occurred", Toast.LENGTH_SHORT).show();
+                loadingBar.dismiss();
             }
         });
 

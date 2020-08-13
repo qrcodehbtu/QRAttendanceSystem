@@ -47,9 +47,8 @@ public class FacultyLogin extends AppCompatActivity {
                  String roll = etRollNumber.getText().toString();
                  String pw = etPassword.getText().toString();
                  if(isEmpty(etRollNumber.getText().toString()) || isEmpty(etPassword.getText().toString())  )
-                 {
                      Toast.makeText(FacultyLogin.this,"Please enter your username and password..",Toast.LENGTH_SHORT).show();
-                 }
+
                  else
                      {
 
@@ -97,7 +96,7 @@ public class FacultyLogin extends AppCompatActivity {
             }
             else
             {
-                Toast.makeText(FacultyLogin.this, "Nikal Laude !! Pahli fursat mein nikal", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FacultyLogin.this, "Incorrect Password or RollNo.", Toast.LENGTH_SHORT).show();
                 loadingBar.dismiss();
             }
 

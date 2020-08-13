@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -39,11 +41,16 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AdminPanel extends AppCompatActivity  {
-    private Spinner spin,st_year;
+    private Spinner st_branch,st_year;
     private String branch ="";
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
     private String yearno="";
     private  Button searchattendance;
     private  String[] branchesname = { "SELECT BRANCH" ,"Computer Science", "Information Technology", "Chemical Engineering", "Mechnanical Engineering", "Civil Engineering" ,
@@ -56,7 +63,7 @@ public class AdminPanel extends AppCompatActivity  {
         Spinner  st_year =(Spinner) findViewById(R.id.st_year);
         Spinner st_branch = (Spinner)  findViewById(R.id.stbranch);
         searchattendance = (Button) findViewById(R.id.check_attendance);
-        setspinnerview(spin,st_year);
+        setspinnerview(st_branch,st_year);
         searchattendance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +82,31 @@ public class AdminPanel extends AppCompatActivity  {
  }
 
     private void showclass() {
+        final DatabaseReference rootref = FirebaseDatabase.getInstance().getReference();
+        rootref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<StudentList> mstudentList = new ArrayList<>();
+            for(final DataSnapshot ds: snapshot.child("attendance").child(yearno).child(branch).getChildren())
+            {
+                students studentdata=snapshot.child("students").child(ds.getKey().toString()).getValue(students.class);
+                final String studentName = studentdata.getName();
+                mstudentList.add(new StudentList(ds.getKey().toString(), studentName));
+            }
+                mRecyclerView = findViewById(R.id.showBranch);
+                mRecyclerView.setHasFixedSize(true);
+                mLayoutManager = new LinearLayoutManager(AdminPanel.this);
+                mAdapter = new StudentAdapter(mstudentList);
+                mRecyclerView.setLayoutManager(mLayoutManager);
+                mRecyclerView.setAdapter(mAdapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void setspinnerview(Spinner spin,Spinner st_year)
