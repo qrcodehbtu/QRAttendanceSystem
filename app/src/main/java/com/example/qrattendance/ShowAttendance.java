@@ -85,6 +85,7 @@ public class ShowAttendance extends AppCompatActivity {
                     if(ds.getKey().equals("rollno:"))
                         continue;
                     final String ParentKey=ds.getKey().toString();
+                    final String attendanceCount = ds.getChildrenCount()+"";
                     Log.d("month",ds.getKey().toString());
                     DatabaseReference rootref1 = FirebaseDatabase.getInstance().getReference();
                     rootref1.addValueEventListener(new ValueEventListener() {
@@ -93,12 +94,12 @@ public class ShowAttendance extends AppCompatActivity {
                             final List<ChildList> Child = new ArrayList<>();
                             for(DataSnapshot ds1: snapshot.child("attendance").child(yearno).child(branch).child(rollno).child(ParentKey).getChildren())
                             {
-                                final String ChildValue = ds1.getKey().toString() +" Time: "+ ds1.getValue().toString();
+                                final String ChildValue = "  Date: "+ds1.getKey().toString() +"                    Time: "+ ds1.getValue().toString();
                                 Log.d("dateAndtime",ChildValue);
                                 Child.add(new ChildList(ChildValue));
                                 Log.d("date","added");
                             }
-                            Parent.add(new ParentList(ds.getKey().toString(), Child));
+                            Parent.add(new ParentList("Month: "+ds.getKey().toString()+"              TA:- "+attendanceCount, Child));
                             DocExpandableRecyclerAdapter adapter = new DocExpandableRecyclerAdapter(Parent);
                             recycler_view.setAdapter(adapter);
 

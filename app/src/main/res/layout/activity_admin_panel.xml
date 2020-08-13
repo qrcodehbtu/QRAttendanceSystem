@@ -1,16 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fillViewport="false">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".AdminPanel">
+
+    <TextView
+        android:id="@+id/student_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Enter Student Details"
+        android:textAlignment="center"
+        android:textColor="#F8000000"
+        android:textSize="25dp"
+        android:textStyle="bold|italic" />
+    <Spinner
+        android:id="@+id/stbranch"
+        android:background="@drawable/input_design"
+        android:layout_width="350dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:padding="15dp"
+        android:text="Select branch"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/student_detail" />
+
+    <Spinner
+        android:id="@+id/st_year"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_design"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/stbranch"
+        android:padding="15dp"
+
+        />
+
+    <Button
+        android:id="@+id/check_attendance"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/st_year"
+        android:text="Check Attendance"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:padding="15dp"
+        android:layout_marginTop="20dp"
+        android:textSize="19dp"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button"
+        />
 
 
 </RelativeLayout>
